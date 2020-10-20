@@ -1,0 +1,43 @@
+RewriteEngine On
+#Rewrite menu
+RewriteRule ^home$ index.php
+RewriteRule ^cart$ index.php?controller=cart&action=read
+RewriteRule ^blog$ index.php?controller=blog&action=read
+RewriteRule ^introduce/about_us$ index.php?controller=introduction&action=aboutus
+RewriteRule ^contact$ index.php?controller=contact&action=read
+
+#Rewrite trang danh muc san pham
+RewriteRule ^product/categories/(.*)/(.*)$ index.php?controller=products&action=categories&id=$1&p=$2
+RewriteRule ^product/categories/(.*)$ index.php?controller=products&action=categories&id=$1 [L,QSA]
+
+#Rewrite trang tat ca san pham
+RewriteRule ^product/all$ index.php?controller=products&action=all [L,QSA]
+RewriteRule ^product/all/page/(.*)$ index.php?controller=products&action=all&p=$1
+
+#Rewrite trang collection 
+RewriteRule ^product/collection/(.*)/(.*)$ index.php?controller=products&action=collection&id=$1&p=$2
+RewriteRule ^product/collection/(.*)$ index.php?controller=products&action=collection&id=$1 [L,QSA]
+
+#Rewrite trang chi tiet san pham
+RewriteRule ^product/detail/(.*)$ index.php?controller=products&action=detail&id=$1
+
+#Rewrite trang blog
+RewriteRule ^blog/detail/(.*)$ index.php?controller=blog&action=detail&id=$1
+RewriteRule ^blog/page/(.*)$ index.php?controller=blog&action=read&p=$1
+
+#Rewrite trang gioi thieu
+RewriteRule ^introduce/chinh_sach_doi_tra$ index.php?controller=introduction&action=returnpolicy
+RewriteRule ^introduce/chinh_sach_bao_mat$ index.php?controller=introduction&action=privacypolicy
+RewriteRule ^introduce/dieu_khoan_dich_vu$ index.php?controller=introduction&action=termsofservice
+
+#Rewrite trang gio hang
+RewriteRule ^cart/delivery$ index.php?controller=cart&action=delivery
+RewriteRule ^cart/checkout$ index.php?controller=cart&action=checkout
+RewriteRule ^cart/success$ index.php?controller=cart&action=success
+
+#Rewrite account
+RewriteRule ^login$ index.php?controller=account&action=login [L,QSA]
+RewriteRule ^logout$ index.php?controller=account&action=logout
+RewriteRule ^register$ index.php?controller=account&action=register [L,QSA]
+RewriteRule ^update$ index.php?controller=account&action=update [L,QSA]
+RewriteRule ^account/(.*)/(.*)$ index.php?controller=account&action=$1&id=$2
