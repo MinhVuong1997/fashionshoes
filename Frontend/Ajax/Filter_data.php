@@ -57,10 +57,10 @@ if(isset($_POST["action"]))
     $query .= " order by name desc";
   }
   if($_POST['sort'] == 'priceASC'){
-    $query .= " order by price asc";
+    $query .= " order by (price - price*discount/100) asc";
   }
   if($_POST['sort'] == 'priceDESC'){
-    $query .= " order by price desc";
+    $query .= " order by (price - price*discount/100) desc";
   }
  }
  $recordPerPage = 8;
