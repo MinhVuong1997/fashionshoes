@@ -162,6 +162,7 @@
               <div class="row p-3">
                 <?php if($numPage == 0): ?>
                     <div class="col-12 text-center">Không có sản phẩm</div>
+                <?php elseif($numPage == 1): ?>
                 <?php else: ?>
                   <ul class="pagination">
                       <?php include "Pagination.php" ?>

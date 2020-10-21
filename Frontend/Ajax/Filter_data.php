@@ -141,6 +141,7 @@ if(isset($_POST["action"]))
            }
       $output .= '</div></div>';   
   }
+  if($numPage > 1){
   $output .='
   <ul class="pagination col-12 p-3">';
   $previous_link = '';
@@ -246,6 +247,7 @@ if(isset($_POST["action"]))
   }
   $output .= $previous_link . $page_link . $next_link;
   $output .='</ul>';
+}
 }
 else
  {
