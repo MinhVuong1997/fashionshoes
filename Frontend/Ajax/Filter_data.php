@@ -44,15 +44,30 @@ if(isset($_POST["action"]))
    AND p.id in(select product_id from product_parameters where parameter_id IN('".$size_filter."'))
   ";
  }
+
  $conn = Connection::getInstance();
  $statement = $conn->query($query);
  $total_row = $statement->rowCount();
 
+ if(isset($_POST['sort']) && $_POST['sort'] != ''){
+  if($_POST['sort'] == 'nameASC'){
+    $query .= " order by name asc";
+  }
+  if($_POST['sort'] == 'nameDESC'){
+    $query .= " order by name desc";
+  }
+  if($_POST['sort'] == 'priceASC'){
+    $query .= " order by price asc";
+  }
+  if($_POST['sort'] == 'priceDESC'){
+    $query .= " order by price desc";
+  }
+ }
  $recordPerPage = 8;
  $numPage = ceil($total_row/$recordPerPage);
  $page = isset($_POST["p"]) && $_POST["p"] > 0 ? $_POST["p"] : 1;
  $from = ($page-1) * $recordPerPage;
- $query .=" order by id desc limit $from, $recordPerPage";
+ $query .=" limit $from, $recordPerPage";
  $statement = $conn->query($query);
  $result = $statement->fetchAll();
  

@@ -96,15 +96,7 @@
                   </h2>
                 </div>
                 <div class="col-sm-3">
-                  <select class="custom-select" onchange="
-                  <?php if (isset($_GET["action"])&&$_GET["action"]=="categories"): ?>
-                    location.href = 'product/categories/<?php echo $category_id ?>?sort='+this.value;
-                  <?php elseif (isset($_GET["action"])&&$_GET["action"]=="all"): ?>
-                      location.href = 'product/all?sort='+this.value;
-                    <?php elseif (isset($_GET["action"])&&$_GET["action"]=="collection"): ?>
-                      location.href = 'product/collection/<?php echo $collection_id ?>?sort='+this.value;
-                    <?php endif ?>
-                  ">
+                  <select class="custom-select" id="sorting">
                     <option value="0">Sắp xếp</option>
                     <option value="nameASC">Tên: A-Z</option>
                     <option value="nameDESC">Tên: Z-A</option>
@@ -205,7 +197,7 @@
   </style>
   <script type="text/javascript">
     $(document).ready(function() {
-    function filter_data(page)
+    function filter_data(page,sort)
     {
         $('.filter_data').html('<div class="col-12 text-center" id="loading"></div>');
         var brand = get_filter('brand');
@@ -215,16 +207,18 @@
         var action = '<?php echo $_GET["action"] ?>';     
         var category_id = '<?php echo isset($category_id) ? $category_id : 0 ?>';       
         var collection_id = '<?php echo isset($collection_id) ? $collection_id : 0 ?>';
+        
         $.ajax({
             url:"Ajax/Filter_data.php",
             method:"POST",
-            data:{brand:brand, price:price, color:color, size:size, p:page, action:action, category_id:category_id,collection_id:collection_id},
+            data:{brand:brand, price:price, color:color, size:size, p:page, action:action, category_id:category_id,collection_id:collection_id, sort:sort},
             success:function(data){
               setTimeout(function(){
                 $('.filter_data').html(data);
                 $('.page-link').click(function(event) {
+                  var sort = $('#sorting').val();
                   var page = $(this).data('page');
-                  filter_data(page);
+                  filter_data(page,sort);
                 })
               },700)
             }
@@ -241,8 +235,23 @@
     }
 
     $('.common_selector').click(function(){
-        filter_data();
+        var sort = $('#sorting').val();
+        filter_data(1, sort);
         $('.pagination').remove();
+    });
+
+    $('#sorting').change(function(){
+        var sort = $(this).val();
+        filter_data(1, sort);
+        $('.pagination').remove();
+    });
+
+    $('.page-link').click(function(event) {
+      event.preventDefault();
+      var sort = $('#sorting').val();
+      var page = $(this).data('page');
+      filter_data(page,sort);
+      $('.pagination').remove();
     });
 
     $('#addtocart').on('show.bs.modal', function(e) {
