@@ -208,11 +208,11 @@
         var action = '<?php echo $_GET["action"] ?>';     
         var category_id = '<?php echo isset($category_id) ? $category_id : 0 ?>';       
         var collection_id = '<?php echo isset($collection_id) ? $collection_id : 0 ?>';
-        
+        var recordPerPage = '<?php echo $recordPerPage ?>';
         $.ajax({
             url:"Ajax/Filter_data.php",
             method:"POST",
-            data:{brand:brand, price:price, color:color, size:size, p:page, action:action, category_id:category_id,collection_id:collection_id, sort:sort},
+            data:{brand:brand, price:price, color:color, size:size, p:page, action:action, category_id:category_id,collection_id:collection_id, sort:sort, recordPerPage:recordPerPage},
             success:function(data){
               setTimeout(function(){
                 $('.filter_data').html(data);

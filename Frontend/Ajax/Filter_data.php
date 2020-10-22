@@ -63,7 +63,7 @@ if(isset($_POST["action"]))
     $query .= " order by (price - price*discount/100) desc";
   }
  }
- $recordPerPage = 8;
+ $recordPerPage = $_POST['recordPerPage'];
  $numPage = ceil($total_row/$recordPerPage);
  $page = isset($_POST["p"]) && $_POST["p"] > 0 ? $_POST["p"] : 1;
  $from = ($page-1) * $recordPerPage;
