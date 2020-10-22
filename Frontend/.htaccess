@@ -2,7 +2,7 @@ RewriteEngine On
 #Rewrite menu
 RewriteRule ^home$ index.php
 RewriteRule ^cart$ index.php?controller=cart&action=read
-RewriteRule ^blog$ index.php?controller=blog&action=read
+RewriteRule ^blog$ index.php?controller=blog&action=read [L,QSA]
 RewriteRule ^introduce/about_us$ index.php?controller=introduction&action=aboutus
 RewriteRule ^contact$ index.php?controller=contact&action=read
 
@@ -19,7 +19,7 @@ RewriteRule ^product/collection/(.*)$ index.php?controller=products&action=colle
 RewriteRule ^product/detail/(.*)$ index.php?controller=products&action=detail&id=$1
 
 #Rewrite trang blog
-RewriteRule ^blog/detail/(.*)$ index.php?controller=blog&action=detail&id=$1 [L,QSA]
+RewriteRule ^blog/detail/(.*)$ index.php?controller=blog&action=detail&id=$1
 
 #Rewrite trang gioi thieu
 RewriteRule ^introduce/chinh_sach_doi_tra$ index.php?controller=introduction&action=returnpolicy

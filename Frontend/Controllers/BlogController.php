@@ -2,7 +2,7 @@
 	include "Models/BlogModel.php";
 	class BlogController extends BlogModel{
 		public function read(){
-			$recordPerPage = 10;
+			$recordPerPage = 4;
 			//tinh so trang
 			$numPage = ceil($this->modelTotal()/$recordPerPage);
 			//goi ham de lay du lieu

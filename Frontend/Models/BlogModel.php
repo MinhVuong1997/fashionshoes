@@ -7,7 +7,7 @@
 			//tinh so trang
 			$numPage = ceil($total/$recordPerPage);
 			//lay so trang hien tai truyen tu url
-			$page = isset($_GET["p"]) && $_GET["p"] > 0 ? $_GET["p"]-1 : 0;
+			$page = isset($_GET["page"]) && $_GET["page"] > 0 ? $_GET["page"]-1 : 0;
 			//lay tu ban ghi nao
 			$from = $page * $recordPerPage;
 			//thuc hien truy van

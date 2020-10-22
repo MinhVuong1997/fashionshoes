@@ -55,7 +55,7 @@
 						  <ul class="pagination">
 						    <?php 
 			                    for ($i=1; $i <= $numPage ; $i++){
-			                      $p = isset($_GET["p"]) ? $_GET["p"] : 1;                    
+								  $p = isset($_GET["page"]) ? $_GET["page"] : 1;                  
 			                      if($i != $p){
 			                        echo "<li class=\"page-item\">
 			                            <a href=\"blog?page=$i\" class=\"page-link\">$i</a>
