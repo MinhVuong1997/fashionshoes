@@ -58,12 +58,12 @@
 			                      $p = isset($_GET["p"]) ? $_GET["p"] : 1;                    
 			                      if($i != $p){
 			                        echo "<li class=\"page-item\">
-			                            <a href=\"blog/page/$i\" class=\"page-link\">$i</a>
+			                            <a href=\"blog?page=$i\" class=\"page-link\">$i</a>
 			                        </li>";
 			                      }
 			                      else{
 			                        echo "<li class=\"page-item active\">
-			                            <a href=\"blog/page/$i\" class=\"page-link\">$i</a>
+			                            <a href=\"blog?page=$i\" class=\"page-link\">$i</a>
 			                        </li>";
 			                      }
 			                    }
