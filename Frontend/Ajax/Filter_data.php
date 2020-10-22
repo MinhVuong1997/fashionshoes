@@ -20,15 +20,13 @@ if(isset($_POST["action"]))
   $brand_filter = implode("','", $_POST["brand"]);
   $query .= " AND brand_id in('".$brand_filter."')";
  }
- if(isset($_POST["price"]))
+ if(isset($_POST["price"]) && $_POST["price"] != '')
  {
-  $price_filter = $_POST["price"];
-  foreach ($price_filter as $value) {
-    if($value == '<500k'){$query .= " AND price- (price*discount)/100 < 500000 ";}
-    if($value == '500k-1tr'){$query .= " AND price- (price*discount)/100 between 500000 AND 1000000 ";}
-    if($value == '1tr-1tr5'){$query .= " AND price- (price*discount)/100 between 1000000 AND 1500000 ";}
-    if($value == '>1tr5'){$query .= " AND price- (price*discount)/100 > 1500000";}
-  }
+    $price_filter = $_POST["price"];
+    if($price_filter == '<500k'){$query .= " AND price- (price*discount)/100 < 500000 ";}
+    if($price_filter == '500k-1tr'){$query .= " AND price- (price*discount)/100 between 500000 AND 1000000 ";}
+    if($price_filter == '1tr-1tr5'){$query .= " AND price- (price*discount)/100 between 1000000 AND 1500000 ";}
+    if($price_filter == '>1tr5'){$query .= " AND price- (price*discount)/100 > 1500000";}
  }
  if(isset($_POST["color"]))
  {
@@ -49,7 +47,10 @@ if(isset($_POST["action"]))
  $statement = $conn->query($query);
  $total_row = $statement->rowCount();
 
- if(isset($_POST['sort']) && $_POST['sort'] != ''){
+ if(isset($_POST['sort'])){
+  if($_POST['sort'] == ''){
+    $query .= " order by id desc";
+  }
   if($_POST['sort'] == 'nameASC'){
     $query .= " order by name asc";
   }

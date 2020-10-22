@@ -38,22 +38,27 @@
                   <span>Giá sản phẩm</span>
                   <div class="check-price">
                     <label>
-                        <input class="common_selector price" type="checkbox" name="price" value="<500k">
+                        <input class="common_selector price" type="radio" name="price" value="">
+                        <span>Tất cả</span>
+                      </label>
+                    <br>
+                    <label>
+                        <input class="common_selector price" type="radio" name="price" value="<500k">
                         <span>Dưới 500,000₫</span>
                       </label>
                     <br>
                     <label>
-                        <input class="common_selector price" type="checkbox" name="price" value="500k-1tr">
+                        <input class="common_selector price" type="radio" name="price" value="500k-1tr">
                         <span>500,000₫ - 1,000,000₫</span>
                       </label>
                     <br>
                     <label>
-                        <input class="common_selector price" type="checkbox" name="price" value="1tr-1tr5">
+                        <input class="common_selector price" type="radio" name="price" value="1tr-1tr5">
                         <span>1,000,000₫ - 1,500,000₫</span>
                       </label>
                     <br>
                     <label>
-                        <input class="common_selector price" type="checkbox" name="price" value=">1tr5">
+                        <input class="common_selector price" type="radio" name="price" value=">1tr5">
                         <span>Trên 1,500,000₫</span>
                       </label>
                   </div>
@@ -97,7 +102,7 @@
                 </div>
                 <div class="col-sm-3">
                   <select class="custom-select" id="sorting">
-                    <option value="0">Sắp xếp</option>
+                    <option value="">Sắp xếp</option>
                     <option value="nameASC">Tên: A-Z</option>
                     <option value="nameDESC">Tên: Z-A</option>
                     <option value="priceASC">Giá: Tăng dần</option>
@@ -205,7 +210,7 @@
     {
         $('.filter_data').html('<div class="col-12 text-center" id="loading"></div>');
         var brand = get_filter('brand');
-        var price = get_filter('price');    
+        var price = $('.price:checked').val();    
         var color = get_filter('color');
         var size = get_filter('size');
         var action = '<?php echo $_GET["action"] ?>';     
