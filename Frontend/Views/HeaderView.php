@@ -1,3 +1,4 @@
+<div class="header">
 <div class="topbar">
     <div class="container-fluid">
       <div class="row">
@@ -186,6 +187,7 @@
       </div>
     </div>
   </header> 
+</div>
   <script type="text/javascript">
     $(document).ready(function() {
       $('.openmenu').click(function(event) {

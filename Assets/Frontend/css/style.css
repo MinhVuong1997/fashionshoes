@@ -985,5 +985,15 @@ main{
 	}
 	.star span{
 		font-size: 15px;
+	}	
+}
+@media all and (max-width: 768px){
+	.fixed{
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 999999999;
+		width: 100%;
+		background-color: white;
 	}
 }
