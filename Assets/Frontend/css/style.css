@@ -983,4 +983,7 @@ main{
 	body,html{
 		font-size: 12px;
 	}
+	.star span{
+		font-size: 15px;
+	}
 }
