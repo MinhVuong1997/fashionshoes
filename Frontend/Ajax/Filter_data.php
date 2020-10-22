@@ -72,9 +72,9 @@ if(isset($_POST["action"]))
  $result = $statement->fetchAll();
  
  $output = '';
- 
  if($total_row > 0)
  {
+  $output .='<div class="row">';
    foreach($result as $rows)
   {
   $conn = Connection::getInstance();
@@ -87,7 +87,7 @@ if(isset($_POST["action"]))
   $totalrating = $query->rowCount();
 
       $output .= '
-        <div class="col-md-3 col-6 p-3 product-item">
+        <div class="col-sm-4 col-lg-3 col-6 p-3 product-item">
         <div class="image">
         <a href="product/detail/'.$rows->id.'"><img src="../Assets/Upload/Products/'.$rows->photo.'" alt=""></a>
          <button type="button" class="btn btn-sm add-to-cart" data-toggle="modal" data-target="#addtocart" data-id="'.$rows->id.'">
@@ -141,9 +141,10 @@ if(isset($_POST["action"]))
            }
       $output .= '</div></div>';   
   }
+  $output .= '</div>';
   if($numPage > 1){
   $output .='
-  <ul class="pagination col-12 p-3">';
+  <ul class="pagination row p-3">';
   $previous_link = '';
   $next_link = '';
   $page_link = '';

@@ -105,68 +105,71 @@
                   </select>
                 </div>
               </div>
-              <div class="row filter_data">
-	                <?php foreach ($listRecord as $rows) : ?>
-	                <div class="col-sm-4 col-lg-3 col-6 p-3 product-item">
-	                  <div class="image">
-	                    <a href="product/detail/<?php echo $rows->id ?>"><img src="../Assets/Upload/Products/<?php echo $rows->photo; ?>" alt=""></a>
-	                    <button type="button" class="btn btn-sm add-to-cart" data-toggle="modal" data-target="#addtocart" data-id="<?php echo $rows->id ?>">
-	                      <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Mua ngay
-	                    </button>
-	                    <?php if($rows->hot == 1): ?>
-	                    <div class="hot">
-	                      <img src="../Assets/Frontend/images/icon-hot.png" alt="">
-	                    </div>
-	                    <?php else: ?>
-	                    <?php endif ?>
-	                  </div>
-	                  <div class="name">
-	                    <h3><a href="product/detail/<?php echo $rows->id ?>"><?php echo $rows->name; ?></a></h3>
-	                  </div>
-	                  <?php if($rows->discount == 0) : ?>
-	              <?php else: ?>
-	              <div class="discount">
-	                <span>- <?php echo $rows->discount ?>%</span>
-	              </div>
-	            <?php endif; ?>
-	            <?php if($rows->discount == 0) : ?>
-	              <div class="price">
-	                <span><?php echo number_format($rows->price); ?>₫</span>
-	              </div>
-	            <?php else: ?>
-	              <div class="price-safe">
-	                <span><?php echo number_format($rows->price - ($rows->price * $rows->discount)/100); ?>₫</span>
-	                <del class="price"><?php echo number_format($rows->price); ?>₫</del>
-	              </div>
-	            <?php endif; ?>
-	            <div class="star text-center">
-	              <?php $star = $this->modelGetStar($rows->id) ?>
-	              <?php $totalrating = $this->modelGetTotalRating($rows->id) ?>
-	              <?php if ($star == 0 && $star <= 0.5): ?>
-	                <span>&#9734;&#9734;&#9734;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
-	              <?php elseif($star > 0.5 && $star <= 1.5): ?>
-	                <span>&#9733;&#9734;&#9734;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
-	              <?php elseif($star > 1.5 && $star <= 2.5): ?>
-	                <span>&#9733;&#9733;&#9734;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
-	              <?php elseif($star > 2.5 && $star <= 3.5): ?>
-	                <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
-	              <?php elseif($star > 3.5 && $star <= 4.5): ?>
-	                <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
-	              <?php elseif($star > 4.5 && $star <= 5): ?>
-	                <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
-	              <?php endif ?>
-	            </div>
-	                </div>
-	                <?php endforeach; ?>
-	            <div class="p-3 col-12">
-                <?php if($numPage == 0): ?>
-                    <div class="col-12 text-center">Không có sản phẩm</div>
-                <?php elseif($numPage == 1): ?>
-                <?php else: ?>
-                  <ul class="pagination">
-                      <?php include "Pagination.php" ?>
-                  </ul>
-                <?php endif ?>
+              <div class="filter_data">
+                <div class="row">
+  	               <?php foreach ($listRecord as $rows) : ?>
+  	                <div class="col-sm-4 col-lg-3 col-6 p-3 product-item">
+  	                  <div class="image">
+  	                    <a href="product/detail/<?php echo $rows->id ?>"><img src="../Assets/Upload/Products/<?php echo $rows->photo; ?>" alt=""></a>
+  	                    <button type="button" class="btn btn-sm add-to-cart" data-toggle="modal" data-target="#addtocart" data-id="<?php echo $rows->id ?>">
+  	                      <i class="fas fa-shopping-basket"></i>&nbsp;&nbsp;Mua ngay
+  	                    </button>
+  	                    <?php if($rows->hot == 1): ?>
+  	                    <div class="hot">
+  	                      <img src="../Assets/Frontend/images/icon-hot.png" alt="">
+  	                    </div>
+  	                    <?php else: ?>
+  	                    <?php endif ?>
+  	                  </div>
+  	                  <div class="name">
+  	                    <h3><a href="product/detail/<?php echo $rows->id ?>"><?php echo $rows->name; ?></a></h3>
+  	                  </div>
+  	                  <?php if($rows->discount == 0) : ?>
+      	              <?php else: ?>
+      	              <div class="discount">
+      	                <span>- <?php echo $rows->discount ?>%</span>
+      	              </div>
+      	             <?php endif; ?>
+      	             <?php if($rows->discount == 0) : ?>
+      	              <div class="price">
+      	                <span><?php echo number_format($rows->price); ?>₫</span>
+      	              </div>
+      	             <?php else: ?>
+      	              <div class="price-safe">
+      	                <span><?php echo number_format($rows->price - ($rows->price * $rows->discount)/100); ?>₫</span>
+      	                <del class="price"><?php echo number_format($rows->price); ?>₫</del>
+      	              </div>
+      	             <?php endif; ?>
+        	            <div class="star text-center">
+        	              <?php $star = $this->modelGetStar($rows->id) ?>
+        	              <?php $totalrating = $this->modelGetTotalRating($rows->id) ?>
+        	              <?php if ($star == 0 && $star <= 0.5): ?>
+        	                <span>&#9734;&#9734;&#9734;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
+        	              <?php elseif($star > 0.5 && $star <= 1.5): ?>
+        	                <span>&#9733;&#9734;&#9734;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
+        	              <?php elseif($star > 1.5 && $star <= 2.5): ?>
+        	                <span>&#9733;&#9733;&#9734;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
+        	              <?php elseif($star > 2.5 && $star <= 3.5): ?>
+        	                <span>&#9733;&#9733;&#9733;&#9734;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
+        	              <?php elseif($star > 3.5 && $star <= 4.5): ?>
+        	                <span>&#9733;&#9733;&#9733;&#9733;&#9734;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
+        	              <?php elseif($star > 4.5 && $star <= 5): ?>
+        	                <span>&#9733;&#9733;&#9733;&#9733;&#9733;</span> <small>(<?php echo $totalrating ?> đánh giá)</small>
+        	              <?php endif ?>
+        	            </div>
+  	                </div>
+  	               <?php endforeach; ?>
+                </div>
+  	            <div class="row p-3">
+                  <?php if($numPage == 0): ?>
+                      <div class="col-12 text-center">Không có sản phẩm</div>
+                  <?php elseif($numPage == 1): ?>
+                  <?php else: ?>
+                    <ul class="pagination">
+                        <?php include "Pagination.php" ?>
+                    </ul>
+                  <?php endif ?>
+                </div>
               </div>
               </div>              
             </div>
