@@ -164,11 +164,11 @@ s0.parentNode.insertBefore(s1,s0);
     $(window).scroll(function(event) {
       if ($(window).scrollTop() > header) {
       $('.fixheader').addClass('show');
-      $('.header').addClass('fixed');
+      $('.mobile-header').addClass('fixed');
       }
       else{
         $('.fixheader').removeClass('show');
-        $('.header').removeClass('fixed');
+        $('.mobile-header').removeClass('fixed');
       }
       });
 
