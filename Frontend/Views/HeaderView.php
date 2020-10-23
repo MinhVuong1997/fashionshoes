@@ -166,7 +166,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12 p-2">
+        <div class="col-12 p-2 position-relative">
           <input type="search" id="key-mb" placeholder="Tìm kiếm" class="search w-100 p-2">
           <div class="box-smart-search search-mobile" id="box-smart-search-mb">
             <ul></ul>

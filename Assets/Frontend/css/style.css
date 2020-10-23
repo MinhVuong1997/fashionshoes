@@ -225,11 +225,6 @@ header{
   background-color: #f5f5f5;
   border-radius: 5px;
 }
-.search-mobile{
-  top: 54px !important;
-  z-index: 20;
-  border-radius: 0 !important;
-}
 .menu-mobile{
   display: none;
   background-color: #17a2b89c;
@@ -918,6 +913,9 @@ main{
 .box-smart-search img{
 	width: 70px;
 	margin-right: 10px;
+}
+.search-mobile{
+  z-index: 20;
 }
 .owl-carousel{
     position: relative;
